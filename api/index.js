@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../middleware/authenticateToken.js");
+const authenticateToken = require("../utils/authenticateToken.js");
 const moment = require("moment");
 
 //Import routes
