@@ -1,3 +1,5 @@
+const { executeQuery, addFilter } = require("../../utils/db.js");
+
 const getCompresor = async (req, res) => {
   try {
     const data = [];

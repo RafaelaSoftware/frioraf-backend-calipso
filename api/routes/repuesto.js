@@ -1,3 +1,5 @@
+const { executeQuery, addFilter } = require("../../utils/db.js");
+
 const getRepuesto = async (req, res) => {
   try {
     const data = [];
