@@ -1,9 +1,16 @@
-const { executeQuery } = require("../../utils/db.js");
+const { executeQuery, addFilter } = require("../../utils/db.js");
 
 const getCliente = async (req, res) => {
   try {
-    let { filtro } = req.query;
-    let query = `SELECT id, descripcion as nombre FROM vp_os_cliente where descripcion like '%INTELLYMATION%'`;
+    const { id, filtro } = req.query;
+    let query = `SELECT id, descripcion FROM vp_os_cliente`;
+
+    let filter = "";
+    if (id) filter = addFilter(filter, "id", id, "uuid");
+    if (filtro) filter = addFilter(filter, "descripcion", filtro, "string");
+
+    query += filter;
+    query += ` ORDER BY DESCRIPCION`;
     const data = await executeQuery(query);
 
     res.status(200).json(data);

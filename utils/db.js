@@ -21,6 +21,22 @@ const executeQuery = async (query) => {
   }
 };
 
+const addFilter = (filter, field, value, type) => {
+  const prefix = filter === "" ? "WHERE" : "AND";
+
+  let condition;
+  if (type === "number" || type === "uuid") {
+    condition = `${field} = ${type === "number" ? value : `'${value}'`}`;
+  } else {
+    condition = `${field} LIKE '%${value}%'`;
+  }
+
+  filter += ` ${prefix} ${condition}`;
+
+  return filter;
+};
+
 module.exports = {
   executeQuery,
+  addFilter,
 };
