@@ -28,7 +28,7 @@ const addFilter = (filter, field, value, type) => {
   if (type === "number" || type === "uuid") {
     condition = `${field} = ${type === "number" ? value : `'${value}'`}`;
   } else {
-    condition = `${field} LIKE '%${value}%'`;
+    condition = `${field} ILIKE '%${value}%'`;
   }
 
   filter += ` ${prefix} ${condition}`;
