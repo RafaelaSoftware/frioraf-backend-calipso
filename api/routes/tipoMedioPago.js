@@ -1,3 +1,5 @@
+const { executeQuery, addFilter } = require("../../utils/db.js");
+
 const getTipoMedioPago = async (req, res) => {
   try {
     const { userID } = req.query;
