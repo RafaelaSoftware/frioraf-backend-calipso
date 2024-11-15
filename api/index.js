@@ -12,7 +12,7 @@ const getCompresor = require("./routes/compresor.js");
 
 const getMoneda = require("./routes/moneda.js");
 const getTipoMedioPago = require("./routes/tipoMedioPago.js");
-const getSaldoViaje = require("./routes/saldoViaje.js");
+const getSaldoEmpleado = require("./routes/saldoEmpleado.js");
 
 router.use((req, res, next) => {
   console.log(
@@ -38,6 +38,6 @@ router.get("/compresor", authenticateToken, getCompresor);
 
 router.get("/moneda", authenticateToken, getMoneda);
 router.get("/tipoMedioPago", authenticateToken, getTipoMedioPago);
-router.get("/saldoViaje", authenticateToken, getSaldoViaje);
+router.get("/saldoEmpleado", authenticateToken, getSaldoEmpleado);
 
 module.exports = router;
