@@ -5,7 +5,7 @@ const getTipoMedioPago = async (req, res) => {
     const { empleado } = req.query;
     let query = `SELECT id, descripcion FROM vp_os_tipomediopago`;
 
-    if (usuario) {
+    if (empleado) {
       query += ` WHERE empleado_id = '${empleado}' OR id = 0`;
     }
     query += ` ORDER BY id`;
