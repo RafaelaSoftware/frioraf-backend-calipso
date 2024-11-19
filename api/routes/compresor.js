@@ -12,7 +12,29 @@ const getCompresor = async (req, res) => {
     query += ` ORDER BY marca, modelo`;
     const data = await executeQuery(query);
 
-    res.status(200).json(data);
+    // group by marca
+    let result = [];
+    let currentMarca = "";
+    let currentModelos = [];
+    data.forEach((element) => {
+      // trim and uppercase
+      element.marca = element.marca.trim();
+      element.modelo = element.modelo.trim();
+
+      if (currentMarca.toUpperCase() !== element.marca.toUpperCase()) {
+        if (currentMarca !== "") {
+          result.push({
+            marca: currentMarca.toUpperCase(),
+            modelos: currentModelos,
+          });
+        }
+        currentMarca = element.marca;
+        currentModelos = [];
+      }
+      currentModelos.push(element.modelo.toUpperCase());
+    });
+
+    res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
       message: error.message,
