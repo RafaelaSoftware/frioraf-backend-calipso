@@ -6,7 +6,10 @@ WORKDIR /app
 #Install app dependencies
 COPY package*.json ./
 
-#Run npm install
+# Copy .env file
+COPY .env ./
+
+# Run npm install
 RUN npm install
 
 #Bundle app souce

@@ -23,9 +23,12 @@ router.use((req, res, next) => {
   next();
 });
 
+const secretKey = process.env.SECRET_KEY;
 const sayHello = async (req, res) => {
   return res.status(200).json({
-    message: "👋 🌏 Hola. Servicio Backend de Calipso para FRIO RAF y RQS.",
+    message:
+      "👋 🌏 Hola. Servicio Backend de Calipso para FRIO RAF y RQS. " +
+      secretKey,
   });
 };
 
