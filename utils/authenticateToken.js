@@ -12,13 +12,7 @@ const authenticateToken = (req, res, next) => {
 
   jwt.verify(token, secretKey, (err, user) => {
     if (err) {
-      return res.status(403).json({
-        message: "❌ Invalid Token",
-        authHeader: authHeader,
-        token: token,
-        secretKey: secretKey,
-        error: err,
-      });
+      return res.status(403).json({ message: "❌ Invalid Token" });
     }
     req.user = user;
     next();
