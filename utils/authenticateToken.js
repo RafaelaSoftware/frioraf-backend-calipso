@@ -17,6 +17,7 @@ const authenticateToken = (req, res, next) => {
         authHeader: authHeader,
         token: token,
         secretKey: secretKey,
+        error: err,
       });
     }
     req.user = user;
